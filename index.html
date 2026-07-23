@@ -11,11 +11,9 @@
     <meta property="og:title" content="Vault Hunter's Armory" />
     <meta property="og:description" content="Search 140 Borderlands 2 legendary and unique guns by DLC, rarity, type, source, and drop rate." />
     <meta property="og:url" content="https://jwknt.github.io/bl2/" />
-    <meta property="og:image" content="https://jwknt.github.io/bl2/assets/og.png" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Vault Hunter's Armory" />
     <meta name="twitter:description" content="Search 140 Borderlands 2 legendary and unique guns by DLC, rarity, type, source, and drop rate." />
-    <meta name="twitter:image" content="https://jwknt.github.io/bl2/assets/og.png" />
     <meta name="theme-color" content="#16130f" />
     <title>Vault Hunter's Armory · Borderlands 2 Weapon Guide</title>
     <link rel="stylesheet" href="assets/styles.css" />
@@ -24,62 +22,65 @@
     <a class="skip-link" href="#results">Skip to weapon results</a>
 
     <header class="site-header">
-      <a class="brand" href="./" aria-label="Vault Hunter's Armory home">
-        <span class="brand-mark" aria-hidden="true">Ⅱ</span>
-        <span>
-          <span class="brand-kicker">Borderlands 2 field guide</span>
-          <span class="brand-name">Vault Hunter's Armory</span>
-        </span>
-      </a>
-      <a
-        class="header-link"
-        href="https://github.com/JWKNT/bl2"
-        target="_blank"
-        rel="noreferrer"
-      >
-        View on GitHub ↗
-      </a>
+      <div>
+        <h1>Borderlands 2 Armory</h1>
+        <p>Legendary &amp; unique weapon reference</p>
+      </div>
+      <nav aria-label="Site links">
+        <a href="https://github.com/JWKNT/bl2" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="#about">About</a>
+      </nav>
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="page-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Loot table · 2026 edition</p>
-          <h1 id="page-title">Find the farm.<br /><span>Get the drop.</span></h1>
-          <p class="hero-intro">
-            Every named legendary and unique gun in vanilla Borderlands 2—sorted by
-            release, with its source, rate, and the catches worth knowing.
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <h2 id="page-title">Weapon database</h2>
+          <p>
+            Every named gun in vanilla Borderlands 2, ordered by release with its
+            acquisition source, drop rate, and unusual conditions.
           </p>
         </div>
+        <dl class="quick-stats" aria-label="Database summary">
+          <div><dt>Named guns</dt><dd id="stat-total">140</dd></div>
+          <div><dt>Legendaries</dt><dd id="stat-legendary">40</dd></div>
+          <div><dt>Content groups</dt><dd id="stat-groups">9</dd></div>
+        </dl>
+      </section>
 
-        <div class="search-panel">
-          <label for="weapon-search">Search the armory</label>
-          <div class="search-shell">
-            <span aria-hidden="true">⌕</span>
-            <input
-              id="weapon-search"
-              type="search"
-              autocomplete="off"
-              placeholder="Weapon, boss, location, manufacturer…"
-            />
-            <kbd>⌘ K</kbd>
-          </div>
-          <div class="quick-stats" aria-label="Database summary">
-            <div><strong id="stat-total">140</strong><span>Named guns</span></div>
-            <div><strong id="stat-legendary">40</strong><span>Legendaries</span></div>
-            <div><strong id="stat-groups">9</strong><span>Content groups</span></div>
-          </div>
-        </div>
+      <section class="toolbar" aria-label="Search and sorting controls">
+        <label class="search-control" for="weapon-search">
+          <span>Search</span>
+          <input
+            id="weapon-search"
+            type="search"
+            autocomplete="off"
+            placeholder="Weapon, source, location…"
+          />
+          <kbd>⌘K</kbd>
+        </label>
+        <span class="separator" aria-hidden="true"></span>
+        <label class="sort-control">
+          <span>Sort</span>
+          <select id="sort-select">
+            <option value="release">Release order</option>
+            <option value="name">Name A–Z</option>
+            <option value="rate-desc">Highest simple rate</option>
+            <option value="rate-asc">Lowest simple rate</option>
+            <option value="rarity">Rarity</option>
+          </select>
+        </label>
+        <button class="filter-toggle" id="filter-toggle" type="button">
+          Filters <span id="active-filter-count">0</span>
+        </button>
+        <button class="text-button toolbar-reset" id="reset-filters" type="button">Reset all</button>
       </section>
 
       <section class="armory" aria-label="Weapon database">
         <aside class="filters" id="filters" aria-label="Weapon filters">
           <div class="filter-heading">
-            <div>
-              <span class="section-index">01</span>
-              <h2>Filter loadout</h2>
-            </div>
-            <button class="text-button" id="reset-filters" type="button">Reset all</button>
+            <h2>Filters</h2>
+            <button class="drawer-close" id="drawer-close" type="button" aria-label="Close filters">×</button>
           </div>
           <div id="filter-groups"></div>
           <div class="source-note">
@@ -93,25 +94,8 @@
 
         <section class="results" id="results" aria-live="polite">
           <div class="results-toolbar">
-            <div>
-              <span class="section-index">02</span>
-              <h2><span id="result-count">140</span> weapons found</h2>
-            </div>
-            <div class="toolbar-actions">
-              <button class="filter-toggle" id="filter-toggle" type="button">
-                Filters <span id="active-filter-count">0</span>
-              </button>
-              <label class="sort-control">
-                <span>Sort</span>
-                <select id="sort-select">
-                  <option value="release">Release order</option>
-                  <option value="name">Name A–Z</option>
-                  <option value="rate-desc">Highest simple rate</option>
-                  <option value="rate-asc">Lowest simple rate</option>
-                  <option value="rarity">Rarity</option>
-                </select>
-              </label>
-            </div>
+            <h2><span id="result-count">140</span> weapons</h2>
+            <span>Click a row for full acquisition details.</span>
           </div>
 
           <div class="active-chips" id="active-chips" aria-label="Active filters"></div>
@@ -142,8 +126,8 @@
       </section>
     </main>
 
-    <footer>
-      <p>Vault Hunter's Armory · Data researched July 22, 2026</p>
+    <footer id="about">
+      <p>Borderlands 2 Armory · Data researched July 22, 2026</p>
       <p>
         Sources include
         <a href="https://www.lootlemon.com/db/borderlands-2/weapons" target="_blank" rel="noreferrer">Lootlemon</a>

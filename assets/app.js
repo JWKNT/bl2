@@ -27,6 +27,7 @@
     empty: document.querySelector("#empty-state"),
     chips: document.querySelector("#active-chips"),
     filterToggle: document.querySelector("#filter-toggle"),
+    drawerClose: document.querySelector("#drawer-close"),
     activeFilterCount: document.querySelector("#active-filter-count"),
     filters: document.querySelector("#filters"),
     backdrop: document.querySelector("#drawer-backdrop"),
@@ -322,6 +323,7 @@
   els.reset.addEventListener("click", resetAll);
   els.emptyReset.addEventListener("click", resetAll);
   els.filterToggle.addEventListener("click", openFilters);
+  els.drawerClose.addEventListener("click", closeFilters);
   els.backdrop.addEventListener("click", closeFilters);
   els.dialogClose.addEventListener("click", closeWeapon);
   els.dialog.addEventListener("click", (event) => {
