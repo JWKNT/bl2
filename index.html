@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A searchable Borderlands 2 legendary and unique weapon farming reference, organized by DLC with source and drop-rate data."
+      content="A searchable Borderlands 2 legendary and unique item farming reference for weapons, grenades, shields, class mods, and relics."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Vault Hunter's Armory" />
-    <meta property="og:description" content="Search 140 Borderlands 2 legendary and unique guns by DLC, rarity, type, source, and drop rate." />
+    <meta property="og:title" content="Borderlands 2 Armory" />
+    <meta property="og:description" content="Search 245 Borderlands 2 legendary and unique items by DLC, category, rarity, source, and drop rate." />
     <meta property="og:url" content="https://jwknt.github.io/bl2/" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Vault Hunter's Armory" />
-    <meta name="twitter:description" content="Search 140 Borderlands 2 legendary and unique guns by DLC, rarity, type, source, and drop rate." />
-    <meta name="theme-color" content="#16130f" />
-    <title>Vault Hunter's Armory · Borderlands 2 Weapon Guide</title>
+    <meta name="twitter:title" content="Borderlands 2 Armory" />
+    <meta name="twitter:description" content="Search 245 Borderlands 2 legendary and unique items by DLC, category, rarity, source, and drop rate." />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Borderlands 2 Armory · Legendary &amp; Unique Item Guide</title>
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
@@ -24,7 +24,7 @@
     <header class="site-header">
       <div>
         <h1>Borderlands 2 Armory</h1>
-        <p>Legendary &amp; unique weapon reference</p>
+        <p>Legendary &amp; unique item reference</p>
       </div>
       <nav aria-label="Site links">
         <a href="https://github.com/JWKNT/bl2" target="_blank" rel="noreferrer">GitHub</a>
@@ -35,16 +35,16 @@
     <main>
       <section class="intro" aria-labelledby="page-title">
         <div>
-          <h2 id="page-title">Weapon database</h2>
+          <h2 id="page-title">Item database</h2>
           <p>
-            Every named gun in vanilla Borderlands 2, ordered by release with its
-            acquisition source, drop rate, and unusual conditions.
+            Named weapons, grenades, shields, legendary class mods, and relics in
+            vanilla Borderlands 2—ordered by release with sources, rates, and unusual conditions.
           </p>
         </div>
         <dl class="quick-stats" aria-label="Database summary">
-          <div><dt>Named guns</dt><dd id="stat-total">140</dd></div>
-          <div><dt>Legendaries</dt><dd id="stat-legendary">40</dd></div>
-          <div><dt>Content groups</dt><dd id="stat-groups">9</dd></div>
+          <div><dt>Named items</dt><dd id="stat-total">245</dd></div>
+          <div><dt>Weapons</dt><dd id="stat-weapons">140</dd></div>
+          <div><dt>Other gear</dt><dd id="stat-gear">105</dd></div>
         </dl>
       </section>
 
@@ -55,7 +55,7 @@
             id="weapon-search"
             type="search"
             autocomplete="off"
-            placeholder="Weapon, source, location…"
+            placeholder="Item, source, location…"
           />
           <kbd>⌘K</kbd>
         </label>
@@ -94,7 +94,7 @@
 
         <section class="results" id="results" aria-live="polite">
           <div class="results-toolbar">
-            <h2><span id="result-count">140</span> weapons</h2>
+            <h2><span id="result-count">245</span> items</h2>
             <span>Click a row for full acquisition details.</span>
           </div>
 
@@ -104,8 +104,8 @@
             <table class="weapon-table">
               <thead>
                 <tr>
-                  <th>Weapon</th>
-                  <th>Rarity / Type</th>
+                  <th>Item</th>
+                  <th>Category / Rarity</th>
                   <th>Source</th>
                   <th>Rate</th>
                   <th><span class="sr-only">Details</span></th>
@@ -118,7 +118,7 @@
 
           <div class="empty-state" id="empty-state" hidden>
             <span aria-hidden="true">×</span>
-            <h3>No loot found</h3>
+            <h3>No items found</h3>
             <p>Try removing a filter or searching for a broader term.</p>
             <button class="primary-button" id="empty-reset" type="button">Reset the armory</button>
           </div>
@@ -145,7 +145,7 @@
 
     <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
 
-    <script src="data/weapons.js"></script>
+    <script src="data/items.js"></script>
     <script src="assets/app.js"></script>
   </body>
 </html>

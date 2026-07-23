@@ -1,11 +1,12 @@
 (() => {
   "use strict";
 
-  const weapons = Array.isArray(window.BL2_WEAPONS) ? window.BL2_WEAPONS : [];
+  const weapons = Array.isArray(window.BL2_ITEMS) ? window.BL2_ITEMS : [];
   const filterConfig = [
+    { key: "category", label: "Category" },
     { key: "contentKey", label: "DLC / Expansion", display: (item) => item.contentShort },
     { key: "rarity", label: "Rarity" },
-    { key: "type", label: "Weapon type" },
+    { key: "type", label: "Item type" },
     { key: "manufacturer", label: "Manufacturer" },
   ];
 
@@ -48,12 +49,20 @@
     const byValue = new Map();
     for (const weapon of weapons) {
       const value = weapon[key];
+      if (!value || value === "—") continue;
       const display = filterConfig.find((item) => item.key === key)?.display?.(weapon) || value;
-      if (!byValue.has(value)) byValue.set(value, { value, display, count: 0, order: weapon.contentOrder });
+      if (!byValue.has(value)) {
+        byValue.set(value, {
+          value,
+          display,
+          count: 0,
+          order: key === "category" ? weapon.categoryOrder : weapon.contentOrder,
+        });
+      }
       byValue.get(value).count += 1;
     }
     return [...byValue.values()].sort((a, b) => {
-      if (key === "contentKey") return a.order - b.order;
+      if (key === "contentKey" || key === "category") return a.order - b.order;
       return a.display.localeCompare(b.display);
     });
   }
@@ -91,11 +100,13 @@
   function searchText(weapon) {
     return [
       weapon.name,
+      weapon.category,
       weapon.content,
       weapon.contentShort,
       weapon.rarity,
       weapon.type,
       weapon.manufacturer,
+      weapon.character,
       weapon.elements.join(" "),
       weapon.sources.map((source) => `${source.name} ${source.type} ${source.location}`).join(" "),
       weapon.rates.map((rate) => `${rate.name} ${rate.value}`).join(" "),
@@ -120,7 +131,7 @@
       if (state.sort === "rate-desc") return (b.bestRate ?? -1) - (a.bestRate ?? -1) || a.name.localeCompare(b.name);
       if (state.sort === "rate-asc") return (a.bestRate ?? Infinity) - (b.bestRate ?? Infinity) || a.name.localeCompare(b.name);
       if (state.sort === "rarity") return a.rarity.localeCompare(b.rarity) || a.name.localeCompare(b.name);
-      return a.contentOrder - b.contentOrder || a.name.localeCompare(b.name);
+      return a.contentOrder - b.contentOrder || a.categoryOrder - b.categoryOrder || a.name.localeCompare(b.name);
     });
   }
 
@@ -147,6 +158,7 @@
           <span class="content-tag">${escapeHtml(weapon.contentShort)}</span>
         </td>
         <td>
+          <span class="category-label">${escapeHtml(weapon.category)}</span>
           <span class="rarity-badge">${escapeHtml(weapon.rarity)}</span>
           <span class="meta-line">${escapeHtml(weapon.manufacturer)} · ${escapeHtml(weapon.type)}</span>
         </td>
@@ -171,6 +183,7 @@
         <span class="content-tag">${escapeHtml(weapon.contentShort)}</span>
         <button class="details-button" type="button" data-open="${escapeHtml(weapon.id)}" aria-label="View ${escapeHtml(weapon.name)} details">→</button>
         <div class="card-meta">
+          <span>${escapeHtml(weapon.category)}</span>
           <span class="rarity-badge">${escapeHtml(weapon.rarity)}</span>
           <span>${escapeHtml(weapon.manufacturer)}</span>
           <span>${escapeHtml(weapon.type)}</span>
@@ -232,6 +245,7 @@
       <p class="dialog-kicker">${escapeHtml(weapon.contentShort)}</p>
       <h2 class="dialog-title">${escapeHtml(weapon.name)}</h2>
       <div class="dialog-meta" data-rarity="${escapeHtml(weapon.rarityKey)}">
+        <span>${escapeHtml(weapon.category)}</span>
         <span class="rarity-badge">${escapeHtml(weapon.rarity)}</span>
         <span>${escapeHtml(weapon.manufacturer)}</span>
         <span>${escapeHtml(weapon.type)}</span>
@@ -309,8 +323,8 @@
   restoreState();
 
   document.querySelector("#stat-total").textContent = String(weapons.length);
-  document.querySelector("#stat-legendary").textContent = String(weapons.filter((weapon) => weapon.rarity === "Legendary").length);
-  document.querySelector("#stat-groups").textContent = String(new Set(weapons.map((weapon) => weapon.contentKey)).size);
+  document.querySelector("#stat-weapons").textContent = String(weapons.filter((item) => item.category === "Weapon").length);
+  document.querySelector("#stat-gear").textContent = String(weapons.filter((item) => item.category !== "Weapon").length);
 
   els.search.addEventListener("input", () => {
     state.query = els.search.value.trim();

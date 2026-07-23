@@ -500,6 +500,17 @@ button:focus-visible {
   line-height: 1.4;
 }
 
+.category-label {
+  display: inline-block;
+  margin: 0 3px 3px 0;
+  padding: 1px 5px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: #444;
+  font-size: 10.5px;
+  line-height: 1.4;
+}
+
 [data-rarity="d-epic"] .rarity-badge,
 [data-rarity="e-tech"] .rarity-badge {
   border-color: #b3a0be;
