@@ -1,61 +1,17 @@
 :root {
-  --paper: #ffffff;
-  --surface: #fafafa;
-  --surface-blue: #eef2f7;
-  --ink: #1a1a1a;
-  --muted: #666666;
-  --line: #dcdcdc;
-  --line-strong: #b8b8b8;
-  --blue: #35507a;
-  --blue-dark: #263c5e;
   --amber: #8a5a00;
   --good: #3a6a4a;
   --red: #8c3a3a;
-  --serif: Georgia, "Times New Roman", "Source Serif Pro", serif;
-  --mono: Menlo, Consolas, "Liberation Mono", monospace;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
-  min-width: 320px;
-  margin: 0;
   padding-bottom: 64px;
-  background: var(--paper);
-  color: var(--ink);
-  font: 16px/1.55 var(--serif);
-}
-
-button,
-input,
-select {
-  color: inherit;
-  font: inherit;
-}
-
-button,
-select {
-  cursor: pointer;
-}
-
-a {
-  color: var(--blue);
+  font-size: 16px;
+  line-height: 1.55;
 }
 
 .skip-link {
-  position: fixed;
-  left: 16px;
-  top: -60px;
-  z-index: 100;
   padding: 7px 11px;
-  border: 1px solid var(--ink);
-  background: var(--paper);
 }
 
 .skip-link:focus {
@@ -70,12 +26,8 @@ footer {
 }
 
 .site-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
   gap: 24px;
   padding: 26px 0 11px;
-  border-bottom: 1px solid var(--line);
 }
 
 .site-header h1 {
