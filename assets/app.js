@@ -322,10 +322,6 @@
   renderFilterGroups();
   restoreState();
 
-  document.querySelector("#stat-total").textContent = String(weapons.length);
-  document.querySelector("#stat-weapons").textContent = String(weapons.filter((item) => item.category === "Weapon").length);
-  document.querySelector("#stat-gear").textContent = String(weapons.filter((item) => item.category !== "Weapon").length);
-
   els.search.addEventListener("input", () => {
     state.query = els.search.value.trim();
     render();
