@@ -183,10 +183,8 @@
         <span class="content-tag">${escapeHtml(weapon.contentShort)}</span>
         <button class="details-button" type="button" data-open="${escapeHtml(weapon.id)}" aria-label="View ${escapeHtml(weapon.name)} details">→</button>
         <div class="card-meta">
-          <span>${escapeHtml(weapon.category)}</span>
+          <span class="card-taxonomy">${escapeHtml(weapon.category)} · ${escapeHtml(weapon.manufacturer)} · ${escapeHtml(weapon.type)}</span>
           <span class="rarity-badge">${escapeHtml(weapon.rarity)}</span>
-          <span>${escapeHtml(weapon.manufacturer)}</span>
-          <span>${escapeHtml(weapon.type)}</span>
         </div>
         <div class="card-farm">
           <div>
