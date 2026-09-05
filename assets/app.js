@@ -27,14 +27,10 @@
     emptyReset: document.querySelector("#empty-reset"),
     empty: document.querySelector("#empty-state"),
     chips: document.querySelector("#active-chips"),
-    filterToggle: document.querySelector("#filter-toggle"),
-    drawerClose: document.querySelector("#drawer-close"),
     activeFilterCount: document.querySelector("#active-filter-count"),
     filters: document.querySelector("#filters"),
-    backdrop: document.querySelector("#drawer-backdrop"),
     dialog: document.querySelector("#weapon-dialog"),
     dialogContent: document.querySelector("#dialog-content"),
-    dialogClose: document.querySelector("#dialog-close"),
   };
 
   const escapeHtml = (value) =>
@@ -241,7 +237,7 @@
     if (!weapon) return;
     els.dialogContent.innerHTML = `
       <p class="dialog-kicker">${escapeHtml(weapon.contentShort)}</p>
-      <h2 class="dialog-title">${escapeHtml(weapon.name)}</h2>
+      <h2 class="dialog-title" id="dialog-title">${escapeHtml(weapon.name)}</h2>
       <div class="dialog-meta" data-rarity="${escapeHtml(weapon.rarityKey)}">
         <span>${escapeHtml(weapon.category)}</span>
         <span class="rarity-badge">${escapeHtml(weapon.rarity)}</span>
@@ -277,11 +273,6 @@
     if (updateHash) history.replaceState(null, "", `${location.pathname}${location.search}#${weapon.id}`);
   }
 
-  function closeWeapon() {
-    if (els.dialog.open) els.dialog.close();
-    if (location.hash) history.replaceState(null, "", `${location.pathname}${location.search}`);
-  }
-
   function resetAll() {
     state.query = "";
     state.sort = "release";
@@ -290,16 +281,6 @@
     els.sort.value = "release";
     document.querySelectorAll("input[data-filter]").forEach((input) => { input.checked = false; });
     render();
-  }
-
-  function openFilters() {
-    els.filters.classList.add("is-open");
-    els.backdrop.hidden = false;
-  }
-
-  function closeFilters() {
-    els.filters.classList.remove("is-open");
-    els.backdrop.hidden = true;
   }
 
   function restoreState() {
@@ -330,16 +311,8 @@
   });
   els.reset.addEventListener("click", resetAll);
   els.emptyReset.addEventListener("click", resetAll);
-  els.filterToggle.addEventListener("click", openFilters);
-  els.drawerClose.addEventListener("click", closeFilters);
-  els.backdrop.addEventListener("click", closeFilters);
-  els.dialogClose.addEventListener("click", closeWeapon);
-  els.dialog.addEventListener("click", (event) => {
-    if (event.target === els.dialog) closeWeapon();
-  });
-  els.dialog.addEventListener("cancel", (event) => {
-    event.preventDefault();
-    closeWeapon();
+  els.dialog.addEventListener("close", () => {
+    if (location.hash) history.replaceState(null, "", `${location.pathname}${location.search}`);
   });
 
   document.addEventListener("click", (event) => {
