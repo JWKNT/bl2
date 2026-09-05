@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css" />
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
-    <link rel="stylesheet" href="assets/styles.css?v=20260905.2" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260905.3" />
   </head>
   <body data-site-tone="ochre">
     <a class="skip-link" href="#results">Skip to items</a>
@@ -83,15 +83,15 @@
 
           <div class="active-chips" id="active-chips" aria-label="Active filters"></div>
 
-          <div class="weapon-table-wrap">
-            <table class="weapon-table">
+          <div class="weapon-table-wrap" data-scroll-region role="region" aria-label="Item results" tabindex="0">
+            <table class="weapon-table ui-table">
               <thead>
                 <tr>
-                  <th>Item</th>
-                  <th>Category / Rarity</th>
-                  <th>Source</th>
-                  <th>Rate</th>
-                  <th><span class="sr-only">Details</span></th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Category / Rarity</th>
+                  <th scope="col">Source</th>
+                  <th scope="col">Rate</th>
+                  <th scope="col"><span class="sr-only">Details</span></th>
                 </tr>
               </thead>
               <tbody id="weapon-rows"></tbody>
