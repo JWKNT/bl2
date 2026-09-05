@@ -23,16 +23,15 @@
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css" />
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
-    <link rel="stylesheet" href="assets/styles.css?v=20260905.1" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260905.2" />
   </head>
-  <body>
-    <a class="skip-link" href="#results">Skip to weapon results</a>
+  <body data-site-tone="ochre">
+    <a class="skip-link" href="#results">Skip to items</a>
 
-    <header class="site-header">
-      <h1 class="site-title">Borderlands 2 Armory</h1>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><span class="site-mark" aria-hidden="true">◇</span><h1 class="site-title">Borderlands 2 Armory</h1></div>
       <nav aria-label="Site links">
-        <a href="https://jehlp.net/">Projects</a>
-        <a href="#about">About</a>
+        <a href="#about">Sources</a>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
       </nav>
     </header>
@@ -62,20 +61,16 @@
         <button class="filter-toggle" id="filter-toggle" type="button" aria-controls="filters" aria-expanded="false" data-disclosure="(max-width: 760px)" hidden>
           Filters <span id="active-filter-count">0</span>
         </button>
-        <button class="text-button toolbar-reset" id="reset-filters" type="button">Reset all</button>
+        <button class="text-button toolbar-reset" id="reset-filters" type="button">Reset</button>
       </section>
 
-      <section class="armory" aria-label="Weapon database">
-        <aside class="filters" id="filters" aria-label="Weapon filters">
-          <div class="filter-heading">
-            <h2>Filters</h2>
-          </div>
+      <section class="armory" aria-label="Item database">
+        <aside class="filters" id="filters" aria-label="Item filters">
           <div id="filter-groups"></div>
           <div class="source-note">
-            <span aria-hidden="true">◆</span>
             <p>
-              Vanilla drop tables only. Quest rewards show 100% when the matching
-              turn-in is chosen. Special costs and formulas are preserved verbatim.
+              Vanilla rates. Quest rewards: 100% for the matching turn-in.
+              Special costs and formulas shown as sourced.
             </p>
           </div>
           <button id="filter-apply" class="filter-apply" data-disclosure-close="results" type="button" hidden>Show results</button>
@@ -84,7 +79,6 @@
         <section class="results" id="results" tabindex="-1">
           <div class="results-toolbar">
             <h2 role="status" aria-live="polite"><span id="result-count">245</span> items</h2>
-            <span>Click a row for full acquisition details.</span>
           </div>
 
           <div class="active-chips" id="active-chips" aria-label="Active filters"></div>
@@ -108,20 +102,18 @@
           <div class="empty-state" id="empty-state" hidden>
             <span aria-hidden="true">×</span>
             <h3>No items found</h3>
-            <p>Try removing a filter or searching for a broader term.</p>
-            <button class="primary-button" id="empty-reset" type="button">Reset the armory</button>
+            <button class="primary-button" id="empty-reset" type="button">Clear filters</button>
           </div>
         </section>
       </section>
     </main>
 
     <footer id="about">
-      <p>Borderlands 2 Armory · Data researched July 22, 2026</p>
+      <p>Researched July 22, 2026</p>
       <p>
-        Data:
         <a href="https://www.lootlemon.com/db/borderlands-2/weapons" target="_blank" rel="noreferrer">Lootlemon</a>
         · <a href="https://borderlands.fandom.com/wiki/Borderlands_2" target="_blank" rel="noreferrer">Borderlands Wiki</a>
-        · <a href="https://github.com/JWKNT/bl2">Site source</a>
+        · <a href="https://github.com/JWKNT/bl2">Source</a>
       </p>
     </footer>
 
