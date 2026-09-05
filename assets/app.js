@@ -279,6 +279,7 @@
     Object.values(state.filters).forEach((set) => set.clear());
     els.search.value = "";
     els.sort.value = "release";
+    window.JehlpUI?.enhance(els.sort);
     document.querySelectorAll("input[data-filter]").forEach((input) => { input.checked = false; });
     render();
   }
@@ -289,6 +290,7 @@
     state.sort = params.get("sort") || "release";
     els.search.value = state.query;
     els.sort.value = state.sort;
+    window.JehlpUI?.enhance(els.sort);
     for (const { key } of filterConfig) {
       const values = params.get(key)?.split(",").filter(Boolean) || [];
       values.forEach((value) => state.filters[key].add(value));
