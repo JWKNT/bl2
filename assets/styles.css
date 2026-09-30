@@ -484,7 +484,7 @@ footer p {
 
   .filters { position: static; max-height: none; width: 100%; margin-bottom: 1.25rem; padding: 1rem 0; border-right: 0; border-bottom: 1px solid var(--line-strong); }
   .filter-option { min-height: 2.25rem; align-items: center; }
-  .filter-apply { position: sticky; bottom: var(--site-home-clearance, 4.5rem); width: 100%; background: var(--paper); }
+  .filter-apply { position: sticky; bottom: .5rem; width: 100%; background: var(--paper); }
 
   .weapon-table-wrap {
     display: none;
