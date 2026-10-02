@@ -287,13 +287,16 @@
   function restoreState() {
     const params = new URLSearchParams(location.search);
     state.query = params.get("q") || "";
-    state.sort = params.get("sort") || "release";
+    const requestedSort = params.get("sort");
+    const sortValues = new Set(Array.from(els.sort.options, (option) => option.value));
+    state.sort = sortValues.has(requestedSort) ? requestedSort : "release";
     els.search.value = state.query;
     els.sort.value = state.sort;
     window.JehlpUI?.enhance(els.sort);
     for (const { key } of filterConfig) {
+      const availableValues = new Set(valuesFor(key).map(({ value }) => value));
       const values = params.get(key)?.split(",").filter(Boolean) || [];
-      values.forEach((value) => state.filters[key].add(value));
+      values.filter((value) => availableValues.has(value)).forEach((value) => state.filters[key].add(value));
     }
     document.querySelectorAll("input[data-filter]").forEach((input) => {
       input.checked = state.filters[input.dataset.filter]?.has(input.value) || false;
