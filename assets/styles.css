@@ -33,9 +33,7 @@ body {
   top: 12px;
 }
 
-.site-header,
-main,
-footer {
+main, footer {
   width: min(1200px, calc(100% - 44px));
   margin-inline: auto;
 }
@@ -456,9 +454,7 @@ footer p {
     padding-bottom: 32px;
   }
 
-  .site-header,
-  main,
-  footer {
+  main, footer {
     width: min(100% - 28px, 1200px);
   }
 
