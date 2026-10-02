@@ -203,7 +203,7 @@
     }
     els.chips.innerHTML = chips
       .map(
-        (chip) => `<button class="chip" type="button" data-chip-key="${escapeHtml(chip.key)}" data-chip-value="${escapeHtml(chip.value)}">${escapeHtml(chip.label)} ×</button>`,
+        (chip) => `<button class="chip" type="button" data-chip-key="${escapeHtml(chip.key)}" data-chip-value="${escapeHtml(chip.value)}" aria-label="Remove ${escapeHtml(chip.label)} filter">${escapeHtml(chip.label)} ×</button>`,
       )
       .join("");
     els.activeFilterCount.textContent = String(chips.length);
@@ -282,6 +282,7 @@
     window.JehlpUI?.enhance(els.sort);
     document.querySelectorAll("input[data-filter]").forEach((input) => { input.checked = false; });
     render();
+    els.search.focus();
   }
 
   function restoreState() {
@@ -339,6 +340,7 @@
         if (input) input.checked = false;
       }
       render();
+      (els.chips.querySelector("[data-chip-key]") || els.search).focus();
     }
   });
 
