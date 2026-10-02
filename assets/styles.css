@@ -34,7 +34,7 @@ body {
 }
 
 main, footer {
-  width: min(1200px, calc(100% - 44px));
+  width: min(74rem, calc(100% - 5rem)); /* shared header frame */
   margin-inline: auto;
 }
 
