@@ -268,7 +268,7 @@
         </section>
         ${weapon.note ? `<div class="note-card"><strong>Field note:</strong> ${escapeHtml(weapon.note)}</div>` : ""}
       </div>
-      <a class="source-link" href="${escapeHtml(weapon.sourceUrl)}" target="_blank" rel="noreferrer">Open source page ↗</a>`;
+      <a class="source-link" href="${escapeHtml(weapon.sourceUrl)}" target="_blank" rel="noreferrer">Open source page <span class="ui-link-arrow" aria-hidden="true"></span></a>`;
     els.dialog.showModal();
     if (updateHash) history.replaceState(null, "", `${location.pathname}${location.search}#${weapon.id}`);
   }
